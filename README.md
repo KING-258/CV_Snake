@@ -47,7 +47,7 @@ Welcome to the Nokia Snake Game! This classic game has been adapted with modern 
 
 2. **Install Backend Dependencies**
 
-   Navigate to the `backend` directory and install the required Python packages:
+   Navigate to the `server` directory and install the required Python packages:
 
    ```bash
    pip install opencv-python
