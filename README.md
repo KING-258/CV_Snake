@@ -1,5 +1,5 @@
-# Created by [KING-258](https://www.github.com/KING-258), [D1NLonely](https://www.github.com/D1NLONELY) and [17Arhaan](https://www.github.com/17Arhaan)
-## Overview
+# Created by [KING-258](https://www.github.com/KING-258)
+# Overview
 
 Welcome to the Nokia Snake Game! This classic game has been adapted with modern technology to provide an engaging and beneficial experience for individuals with autism. By leveraging OpenCV for movement detection, this version of Snake can help players develop and refine their motor skills while enjoying a nostalgic game.
 
