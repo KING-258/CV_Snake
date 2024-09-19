@@ -27,7 +27,7 @@ Welcome to the Nokia Snake Game! This classic game has been adapted with modern 
 
 - **Classic Nokia Snake Gameplay**: Enjoy the timeless Snake game experience, originally popularized on Nokia phones.
 - **OpenCV Integration**: Use OpenCV for real-time movement detection, allowing for intuitive control of the snake.
-- **Skill Development**: Designed to aid in the development of motor skills and hand-eye coordination.
+- **Skill Development**: Designed to aid in the development of motor skills and hand-eye coordination for Mentally Challenged or UnderDeveloped Children.
 - **Adaptive Difficulty**: The game dynamically adjusts its difficulty to match the player's skill level.
 
 ## Requirements
