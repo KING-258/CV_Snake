@@ -1,9 +1,4 @@
-<<<<<<< HEAD
 # Created by [KING-258](https://www.github.com/KING-258)
-=======
-# Created by [KING-258](https://www.github.com/KING-258), [D1NLonely](https://www.github.com/D1NLONELY) and [17Arhaan](https://www.github.com/17Arhaan)
->>>>>>> b3fb849 (CV_Snake)
-
 
 <div> 
   <a href="https://github.com/KING-258" target="_blank"><img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a>
@@ -21,14 +16,10 @@
 </div>
 <img src="https://user-images.githubusercontent.com/73097560/115834477-dbab4500-a447-11eb-908a-139a6edaec5c.gif">
 
-<<<<<<< HEAD
-# Overview
-=======
 ## 📈 Contribution Graph
 ![Github Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=KING-258&theme=react)
 
 ## Overview
->>>>>>> b3fb849 (CV_Snake)
 
 Welcome to the Nokia Snake Game! This classic game has been adapted with modern technology to provide an engaging and beneficial experience for individuals with autism. By leveraging OpenCV for movement detection, this version of Snake can help players develop and refine their motor skills while enjoying a nostalgic game.
 
