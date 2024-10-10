@@ -56,7 +56,7 @@ def gen_frames():
                 elif current_direction == "Left":
                     pyautogui.press("left")
                 previous_direction = current_direction
-        path_points[:] = [(px, py, t) for px, py, t in path_points if current_time - t <= 3]
+        path_points[:] = [(px, py, t) for px, py, t in path_points if current_time - t <= 1]
         for i in range(1, len(path_points)):
             cv2.line(result, (path_points[i - 1][0], path_points[i - 1][1]), (path_points[i][0], path_points[i][1]), (0, 255, 255), 2)
         status, buffer = cv2.imencode('.jpg', result)
