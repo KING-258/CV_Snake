@@ -2,8 +2,10 @@ import cv2
 from flask import Flask, Response
 from flask_cors import CORS
 import pyautogui
+import time
 app = Flask(__name__)
 CORS(app)
+path_points = []
 def gen_frames():
     cap = cv2.VideoCapture(0)
     lower_bound = (120, 50, 50)
@@ -21,8 +23,6 @@ def gen_frames():
     previous_direction = None
     while True:
         ret, frame = cap.read()
-        if not ret:
-            continue
         hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
         mask = cv2.inRange(hsv_frame, lower_bound, upper_bound)
         mask = cv2.erode(mask, None, iterations=1)
@@ -30,11 +30,13 @@ def gen_frames():
         result = cv2.bitwise_and(frame, frame, mask=mask)
         contours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
         current_direction = None
+        current_time = time.time()
         if contours:
             largest_contour = max(contours, key=cv2.contourArea)
             x, y, w, h = cv2.boundingRect(largest_contour)
             cx = x + w // 2
             cy = y + h // 2
+            path_points.append((cx, cy, current_time))
             for key, (rx, ry, rw, rh) in rectangles.items():
                 if rx < cx < rx + rw and ry < cy < ry + rh:
                     color = (0, 255, 0)
@@ -54,6 +56,9 @@ def gen_frames():
                 elif current_direction == "Left":
                     pyautogui.press("left")
                 previous_direction = current_direction
+        path_points[:] = [(px, py, t) for px, py, t in path_points if current_time - t <= 3]
+        for i in range(1, len(path_points)):
+            cv2.line(result, (path_points[i - 1][0], path_points[i - 1][1]), (path_points[i][0], path_points[i][1]), (0, 255, 255), 2)
         status, buffer = cv2.imencode('.jpg', result)
         frame = buffer.tobytes()    
         yield (b'--frame\r\n'b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
