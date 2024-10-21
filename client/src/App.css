@@ -70,6 +70,14 @@ body {
   border: none;
   cursor: pointer;
 }
+.food-grid {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 2px solid rgba(255, 0, 0, 0.4);
+  box-sizing: border-box;
+  pointer-events: none
+}
 .pause-button:hover {
   background-color: #555;
 }

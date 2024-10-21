@@ -15,10 +15,10 @@ const DIRECTIONS = {
 function App() {
   const videoRef = useRef(null);
   const getRandomFoodPosition = () => {
-    const x = Math.floor(Math.random() * (WIDTH / GRID_SIZE)) * GRID_SIZE;
-    const y = Math.floor(Math.random() * (HEIGHT / GRID_SIZE)) * GRID_SIZE;
+    const x = Math.floor(Math.random() * ((WIDTH / GRID_SIZE) - 2) + 1) * GRID_SIZE;
+    const y = Math.floor(Math.random() * ((HEIGHT / GRID_SIZE) - 2) + 1) * GRID_SIZE;
     return { x, y };
-  };
+  };  
   const [snake, setSnake] = useState([{ x: WIDTH / 2, y: HEIGHT / 2 }]);
   const [direction, setDirection] = useState(DIRECTIONS[39]);
   const [food, setFood] = useState(getRandomFoodPosition());
@@ -50,17 +50,23 @@ function App() {
       y: newSnake[0].y + direction.y
     };
     if (
-      head.x >= WIDTH || head.x < 0 || 
-      head.y >= HEIGHT || head.y < 0 || 
+      head.x >= WIDTH || head.x < 0 ||
+      head.y >= HEIGHT || head.y < 0 ||
       isCollision(newSnake, head)
     ) {
       setIsGameOver(true);
       return;
     }
     newSnake.unshift(head);
-    if (head.x === food.x && head.y === food.y) {
+    const isInFoodGrid = (
+      head.x >= food.x - GRID_SIZE && 
+      head.x <= food.x + GRID_SIZE &&
+      head.y >= food.y - GRID_SIZE &&
+      head.y <= food.y + GRID_SIZE
+    );
+    if (isInFoodGrid) {
       setFood(getRandomFoodPosition());
-      setSpeed(speed => Math.max(200, speed + 10));
+      setSpeed(speed => Math.max(200, speed - 10));
       setScore(score + 10);
     } else {
       newSnake.pop();
@@ -113,10 +119,20 @@ function App() {
                     style={{ top: segment.y, left: segment.x }}
                   ></div>
                 ))}
+                {}
+                <div
+                  className="food-grid"
+                  style={{
+                    top: food.y - GRID_SIZE,
+                    left: food.x - GRID_SIZE,
+                  }}
+                ></div>
+                
                 <div
                   className="food"
                   style={{ top: food.y, left: food.x }}
                 ></div>
+                
                 {isGameOver && (
                   <div className="game-over">
                     <h2>Game Over</h2>
