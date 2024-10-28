@@ -22,11 +22,11 @@ function App() {
   const [snake, setSnake] = useState([{ x: WIDTH / 2, y: HEIGHT / 2 }]);
   const [direction, setDirection] = useState(DIRECTIONS[39]);
   const [food, setFood] = useState(getRandomFoodPosition());
-  const [speed, setSpeed] = useState(200);
+  const [speed, setSpeed] = useState(150);
   const [isGameOver, setIsGameOver] = useState(false);
   const [score, setScore] = useState(0);
   const [isGameStarted, setIsGameStarted] = useState(false);
-  const [isPaused, setIsPaused] = useState(false);
+  const [isPaused, setIsPaused] = useState(true);
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (DIRECTIONS[e.keyCode] && !isPaused) {
